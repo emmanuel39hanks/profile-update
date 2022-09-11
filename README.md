@@ -1,6 +1,6 @@
 # Profile Update
 
-MEAN stack application to handle a user sign up and sign in flow, functionality to update a users profile
+MEAN stack application to handle user sign up and sign in flow, functionality to update a users profile
 
 
 ## Usage
