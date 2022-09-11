@@ -1,19 +1,19 @@
-<div class="h-screen flex justify-center items-center">
-  <div *ngIf="user" class="bg-white px-16 shadow-sm rounded-lg">
+<div class="my-12 md:h-screen flex justify-center items-center p-4">
+  <div *ngIf="user" class="bg-white px-10 shadow-sm rounded-lg">
     <div class="flex justify-center">
       <h1 class="text-3xl font-bold py-12">Profile Details</h1>
     </div>
     <div class="text-gray-700">
       <div class="grid grid-col text-sm">
-        <div class="grid grid-cols-2">
+        <div class="grid md:grid-cols-2">
           <div class="px-8 py-4 font-semibold">First Name:</div>
           <div class="px-8 py-4">{{ user.firstName }}</div>
         </div>
-        <div class="grid grid-cols-2">
+        <div class="grid md:grid-cols-2">
           <div class="px-8 py-4 font-semibold">Last Name:</div>
           <div class="px-8 py-4">{{ user.lastName }}</div>
         </div>
-        <div class="grid grid-cols-2">
+        <div class="grid md:grid-cols-2">
           <div class="px-8 py-4 font-semibold">Email:</div>
           <div class="px-8 py-4">
             <a class="text-blue-800" href="mailto:jane@example.com">{{
@@ -21,7 +21,7 @@
             }}</a>
           </div>
         </div>
-        <div class="grid grid-cols-2">
+        <div class="grid md:grid-cols-2">
           <div class="px-8 py-4 font-semibold">Username:</div>
           <div class="px-8 py-4">{{ user.username }}</div>
         </div>

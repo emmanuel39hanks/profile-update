@@ -1,27 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { AlertMessagesService } from 'jjwins-angular-alert-messages';
 import { Router } from '@angular/router';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  faBars = faBars;
+  faXmark = faXmark;
+  nav: boolean = true;
+
   constructor(
     public authService: AuthService,
-    private alertMessage: AlertMessagesService,
-    private router: Router
+    private router: Router,
+    private toastrMessage: ToastrService
   ) {}
 
   ngOnInit(): void {}
+  handleNav() {
+    this.nav = !this.nav;
+  }
 
   onLogOut() {
     this.authService.logout();
-    this.alertMessage.show('You are logged out', {
-      cssClass: 'alert-success',
-      timeOut: 3000,
-    });
+    this.toastrMessage.success('You are logged out');
     this.router.navigate(['/home']);
   }
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { AlertMessagesService } from 'jjwins-angular-alert-messages';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -15,7 +14,11 @@ export class EditComponent implements OnInit {
   email!: string;
   username!: string;
 
-  constructor(private authService: AuthService, private router: Router, private alertMessage: AlertMessagesService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastMessage: ToastrService
+  ) {}
 
   ngOnInit(): void {
     const userData = JSON.parse(`${localStorage.getItem('user')}`);
@@ -32,8 +35,8 @@ export class EditComponent implements OnInit {
       username: this.username,
     };
     this.authService.updateProfile(this.id, data).subscribe((data) => {
-      this.alertMessage.show("You have updated your details successfully", {cssClass: 'alert-success', timeOut: 3000} )
-      this.router.navigate(['/dashboard'])
+      this.toastMessage.success('You have updated your details successfully');
+      this.router.navigate(['/dashboard']);
     });
   }
 }

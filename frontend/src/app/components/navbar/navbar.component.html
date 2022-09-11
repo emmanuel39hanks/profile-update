@@ -1,38 +1,61 @@
 <div
-  class="flex justify-between items-center h-24 max-w-[1240px] mx-auto px- text-white"
+  class="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white"
 >
-  <img
-    src="assets/logo.svg"
-    alt="Lupiya Logo"
-    width="100"
-    height="59.5"
-  />
+  <a routerLink="/">
+    <img src="assets/logo.svg" alt="Lupiya Logo" width="100" height="59.5" />
+  </a>
 
   <ul class="hidden md:flex items-center">
     <li class="p-4"><a routerLink="/">Home</a></li>
-    <li *ngIf="authService.isLoggedIn()" class="p-4"><a  routerLink="/dashboard">Dashboard</a></li>
-    <li *ngIf="!authService.isLoggedIn()" class="p-4"><a routerLink="/login" class="btn btn-white">Login</a></li>
-    <li *ngIf="!authService.isLoggedIn()" class="p-4"><a routerLink="/register" class="bg-transparent hover:bg-white text-white font-semibold hover:text-black py-2 px-4 border border-white-500 hover:border-transparent rounded">Sign Up</a></li>
-    <li *ngIf="authService.isLoggedIn()" class="p-4"><a (click)="onLogOut()" href="#" class="btn btn-white">Log Out</a></li>
+    <li *ngIf="authService.isLoggedIn()" class="p-4">
+      <a routerLink="/dashboard">Dashboard</a>
+    </li>
+    <li *ngIf="!authService.isLoggedIn()" class="p-4">
+      <a routerLink="/login" class="btn btn-white">Login</a>
+    </li>
+    <li *ngIf="!authService.isLoggedIn()" class="p-4">
+      <a
+        routerLink="/register"
+        class="bg-transparent hover:bg-white text-white font-semibold hover:text-black py-2 px-4 border border-white-500 hover:border-transparent rounded"
+        >Sign Up</a
+      >
+    </li>
+    <li *ngIf="authService.isLoggedIn()" class="p-4">
+      <a (click)="onLogOut()" href="#" class="btn btn-white">Log Out</a>
+    </li>
   </ul>
-  <!-- <div (click)="handleNav()" className="block md:hidden">
-      {!nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
-    </div> -->
-  <!-- <div
-      className={
-        !nav
-          ? "fixed h-full left-0 top-0 w-[60%] border-r-gray-900 bg-[#000300] ease-in-out duration-500"
-          : "fixed left-[-100%]"
-      }
-    >
-      <div className="w-full m-4">
-        <Image src={logo} alt="Lupiya Logo" width="100" height="59.5" />
-      </div>
-      <ul className="uppercase p-4">
-        <li className="p-4 border-b border-gray-600">Who we are</li>
-        <li className="p-4 border-b border-gray-600">Borrow</li>
-        <li className="p-4 border-b border-gray-600">Invest</li>
-        <li className="p-4 border-b border-gray-600">Sign Up</li>
-      </ul>
-    </div> -->
+  <div (click)="handleNav()" class="block md:hidden">
+    <fa-icon *ngIf="nav" [icon]="faBars" class="fa-lg"></fa-icon>
+    <fa-icon *ngIf="!nav" [icon]="faXmark" class="fa-lg"></fa-icon>
+  </div>
+  <div
+    [ngClass]="
+      !nav
+        ? 'fixed h-full left-0 top-0 w-[60%] border-r-gray-900 bg-[#01375c] ease-in-out duration-500'
+        : 'fixed left-[-100%]'
+    "
+  >
+    <div class="w-full m-4">
+      <img src="assets/logo.svg" alt="Lupiya Logo" width="100" height="59.5" />
+    </div>
+    <ul className="uppercase p-4">
+      <li class="p-4 border-b border-gray-600"><a routerLink="/">Home</a></li>
+      <li *ngIf="authService.isLoggedIn()" class="p-4 border-b border-gray-600">
+        <a routerLink="/dashboard">Dashboard</a>
+      </li>
+      <li *ngIf="!authService.isLoggedIn()" class="p-4 border-b border-gray-600">
+        <a routerLink="/login" class="btn btn-white">Login</a>
+      </li>
+      <li *ngIf="!authService.isLoggedIn()" class="p-4 border-b border-gray-600">
+        <a
+          routerLink="/register"
+          class="bg-transparent hover:bg-white text-white font-semibold hover:text-black py-2 px-4 border border-white-500 hover:border-transparent rounded"
+          >Sign Up</a
+        >
+      </li>
+      <li *ngIf="authService.isLoggedIn()" class="p-4 border-b border-gray-600">
+        <a (click)="onLogOut()" href="#" class="btn btn-white">Log Out</a>
+      </li>
+    </ul>
+  </div>
 </div>

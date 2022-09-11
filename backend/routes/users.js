@@ -81,7 +81,6 @@ router.put(
       { new: true },
       (err, updatedUser) => {
         if (err) throw err;
-        console.log(updatedUser);
         res.json(updatedUser);
       }
     );
