@@ -46,8 +46,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// Requiring the passport config
 require("./config/passport")(passport);
 
+
+// Setting middleware for the /users route
 app.use("/users", users);
 
 app.get("/", (req, res) => {

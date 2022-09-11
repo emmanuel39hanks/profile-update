@@ -20,6 +20,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+
   registerUser(user: User): Observable<any> {
     return this.http.post(
       'http://localhost:3000/users/register',

@@ -24,6 +24,8 @@ router.post("/register", (req, res) => {
   });
 });
 
+
+// Authenticating user by username, comparing passwords and then sending back a success status along with a JWT token
 router.post("/auth", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -56,6 +58,8 @@ router.post("/auth", (req, res) => {
   });
 });
 
+
+// Protected route to retrieve profile data
 router.get(
   "/profile",
   passport.authenticate("jwt", { session: false }),
@@ -64,6 +68,8 @@ router.get(
   }
 );
 
+
+// Protected route to update profile data
 router.put(
   "/profile/:id",
   passport.authenticate("jwt", { session: false }),
