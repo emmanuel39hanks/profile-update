@@ -8,7 +8,7 @@ MEAN stack application to handle a user sign up and sign in flow, functionality 
 
 ### Installation
 
-Install the NPM Packages in both the frontend and backend directories with the following command:
+Install the NPM Packages in both the frontend and backend directories with the command:
 
 ```sh
 $ npm install
