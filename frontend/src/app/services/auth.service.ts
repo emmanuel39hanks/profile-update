@@ -38,4 +38,15 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
     this.user = user;
   }
+
+  logout() {
+    this.user = {
+      firstName: '',
+      lastName: '',
+      username: '',
+      email: '',
+      password: '',
+    };
+    localStorage.clear();
+  }
 }
