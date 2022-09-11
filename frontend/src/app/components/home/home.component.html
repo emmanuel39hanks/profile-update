@@ -11,7 +11,7 @@
           Fast and flexible financing.
         </p>
       </div>
-      <div class="flex justify-center py-12">
+      <div *ngIf="!authService.isLoggedIn()" class="flex justify-center py-12">
         <a routerLink="/register" class="bg-[#00df9a] hover:bg-[#00ae77] w-[200px] rounded-md font-medium py-3 px-6">
           Get Started
         </a>
