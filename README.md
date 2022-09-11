@@ -14,7 +14,7 @@ Install the NPM Packages in both the frontend and backend directories with the c
 $ npm install
 ```
 
-Create a `.env` file in the backend directories and add the following to it:
+Create a `.env` file in the backend directory and add the following environment variables with your credentials:
 
 ```
 DB_URL=linktoyourmongodbdatabase
@@ -40,4 +40,4 @@ Next navigate to the frontend directory in a new terminal session and run the co
 $ ng serve --open
 ```
 
-The frontend and backend should now be up and running correctly at localhost:4200 (for the frontend) and localhost:3000 (for the backend)
+The frontend and backend should now be up and running correctly at localhost:4200 (frontend) and localhost:3000 (backend)
