@@ -13,6 +13,8 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
+  user!: User;
+
   constructor(private http: HttpClient) {}
 
   registerUser(user: User): Observable<any> {
@@ -21,5 +23,19 @@ export class AuthService {
       user,
       httpOptions
     );
+  }
+
+  authenticateUser(user: any): Observable<any> {
+    return this.http.post(
+      'http://localhost:3000/users/auth',
+      user,
+      httpOptions
+    );
+  }
+
+  storeUserData(token: any, user: any) {
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.user = user;
   }
 }

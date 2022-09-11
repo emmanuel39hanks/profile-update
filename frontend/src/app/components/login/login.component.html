@@ -18,19 +18,19 @@
       </h2>
       
     </div>
-    <form class="mt-8 space-y-6" action="#" method="POST">
+    <form class="mt-8 space-y-6" (ngSubmit)="onLoginSubmit()">
       <input type="hidden" name="remember" value="true" />
       <div class="-space-y-px rounded-md shadow-sm">
         <div>
-          <label for="email-address" class="sr-only">Email address</label>
+          <label for="email-address" class="sr-only">Username</label>
           <input
-            id="email-address"
-            name="email"
-            type="email"
-            autocomplete="email"
+            id="username"
+            name="username"
+            type="text"
             required
             class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-gray-300 focus:outline-none focus:ring-gray-300 sm:text-sm"
-            placeholder="Email address"
+            placeholder="Username"
+            [(ngModel)]="username"
           />
         </div>
         <div>
@@ -43,6 +43,7 @@
             required
             class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-gray-300 focus:outline-none focus:ring-gray-300 sm:text-sm"
             placeholder="Password"
+            [(ngModel)]="password"
           />
         </div>
       </div>
