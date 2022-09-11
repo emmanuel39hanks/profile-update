@@ -16,10 +16,11 @@ $ npm install
 
 Create a `.env` file in the backend directories and add the following to it:
 
-`
+```
 DB_URL=linktoyourmongodbdatabase
 SECRET=secretforjwtandpassport
-`
+```
+
 Now you are ready to run the application, navigate to the backend directory in a terminal session and then run the commands:
 
 ```sh
