@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/login']);
         return true;
       } else {
-        this.toastMessage.error('Something went wrong');
+        this.toastMessage.error(data.message);
         this.router.navigate(['/register']);
         return false;
       }

@@ -4,6 +4,7 @@ const router = express.Router();
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const e = require("express");
 
 // Register
 router.post("/register", (req, res) => {
@@ -15,15 +16,41 @@ router.post("/register", (req, res) => {
     password: req.body.password,
   });
 
-  User.addUser(newUser, (err, user) => {
-    if (err) {
-      res.json({ success: false, message: "Failed to register user" });
+  // Checking if set username exists in database, if it does, we will return an error message
+  User.findOne({ username: newUser.username }, (err, user) => {
+    if (user) {
+      res.json({
+        success: false,
+        message: "Username is already in use, try use another username",
+      });
+      return;
     } else {
-      res.json({ success: true, message: "Successfully registered user" });
+      // And then we check if e-mail already exists, if it does, we will return an error message
+      User.findOne({ email: newUser.email }, (err, user) => {
+        if (user) {
+          res.json({
+            success: false,
+            message: "E-Mail is already in use, try use another e-mail",
+          });
+          return;
+        } else {
+          // If both username and e-mail don't exist, we then register the user
+          User.addUser(newUser, (err, user) => {
+            if (err) {
+              res.json({ success: false, message: "Failed to register user" });
+            } else {
+              res.json({
+                success: true,
+                message: "Successfully registered user",
+              });
+            }
+          });
+          return;
+        }
+      });
     }
   });
 });
-
 
 // Authenticating user by username, comparing passwords and then sending back a success status along with a JWT token
 router.post("/auth", (req, res) => {
@@ -58,7 +85,6 @@ router.post("/auth", (req, res) => {
   });
 });
 
-
 // Protected route to retrieve profile data
 router.get(
   "/profile",
@@ -67,7 +93,6 @@ router.get(
     res.json({ user: req.user });
   }
 );
-
 
 // Protected route to update profile data
 router.put(
