@@ -14,7 +14,7 @@ Install the NPM Packages in both the frontend and backend directories with the c
 $ npm install
 ```
 
-Create a `.env` file in the backend directories and add the following to it:
+Create a `.env` file in the backend directory and add the following environment variables with your credentials:
 
 ```
 DB_URL=linktoyourmongodbdatabase
