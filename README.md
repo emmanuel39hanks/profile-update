@@ -40,4 +40,4 @@ Next navigate to the frontend directory in a new terminal session and run the co
 $ ng serve --open
 ```
 
-The frontend and backend should now be up and running correctly at localhost:4200 (for the frontend) and localhost:3000 (for the backend)
+The frontend and backend should now be up and running correctly at localhost:4200 (frontend) and localhost:3000 (backend)
