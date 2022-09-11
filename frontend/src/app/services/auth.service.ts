@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   getProfile(): Observable<any> {
-    return this.http.get('http://localhost:3000/users/dashboard', httpOptions);
+    return this.http.get('http://localhost:3000/users/profile', httpOptions);
   }
 
   storeUserData(token: any, user: any) {
@@ -51,10 +51,14 @@ export class AuthService {
       return false;
     } else {
       return !helper.isTokenExpired(`${localStorage.getItem('id_token')}`);
-      
     }
   }
 
+  updateProfile(id: any, data: any): Observable<any> {
+    let url = `http://localhost:3000/users/profile/${id}`;
+    return this.http.put(url, JSON.stringify(data), httpOptions);
+  }
+  
   logout() {
     this.user = {
       firstName: '',

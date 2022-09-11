@@ -57,10 +57,34 @@ router.post("/auth", (req, res) => {
 });
 
 router.get(
-  "/dashboard",
+  "/profile",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     res.json({ user: req.user });
+  }
+);
+
+router.put(
+  "/profile/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          username: req.body.username,
+        },
+      },
+      { new: true },
+      (err, updatedUser) => {
+        if (err) throw err;
+        console.log(updatedUser);
+        res.json(updatedUser);
+      }
+    );
   }
 );
 
