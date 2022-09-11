@@ -25,8 +25,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onRegisterSubmit(): any {
-    const user: User = {
+  onRegisterSubmit() {
+    const user = {
       firstName: this.firstName,
       lastName: this.lastName,
       username: this.username,
@@ -49,10 +49,13 @@ export class RegisterComponent implements OnInit {
       if (data.success) {
         this.toastMessage.success('You are now registered, please login.');
         this.router.navigate(['/login']);
+        return true;
       } else {
         this.toastMessage.error('Something went wrong');
         this.router.navigate(['/register']);
+        return false;
       }
     });
+    return true;
   }
 }
