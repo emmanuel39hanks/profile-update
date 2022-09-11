@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+const helper = new JwtHelperService();
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -33,10 +36,23 @@ export class AuthService {
     );
   }
 
+  getProfile(): Observable<any> {
+    return this.http.get('http://localhost:3000/users/dashboard', httpOptions);
+  }
+
   storeUserData(token: any, user: any) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.user = user;
+  }
+
+  isLoggedIn() {
+    if (localStorage.getItem('id_token') == undefined) {
+      return false;
+    } else {
+      return !helper.isTokenExpired(`${localStorage.getItem('id_token')}`);
+      
+    }
   }
 
   logout() {
