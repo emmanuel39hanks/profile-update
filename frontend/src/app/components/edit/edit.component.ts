@@ -36,6 +36,8 @@ export class EditComponent implements OnInit {
       email: this.user.email,
       username: this.user.username,
     };
+    localStorage.removeItem('user');
+    localStorage.setItem('user', JSON.stringify(this.user));
     this.authService.updateProfile(this.id, data).subscribe((data) => {
       this.toastMessage.success('You have updated your details successfully!');
       this.router.navigate(['/dashboard']);
