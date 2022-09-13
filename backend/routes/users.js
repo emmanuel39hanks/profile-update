@@ -73,7 +73,8 @@ router.post("/auth", (req, res) => {
           token: token,
           user: {
             id: user._id,
-            name: user.name,
+            firstName: user.firstName,
+            lastName: user.lastName,
             username: user.username,
             email: user.email,
           },

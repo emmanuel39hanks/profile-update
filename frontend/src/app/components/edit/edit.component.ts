@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
+  user!: any;
   id!: string;
   firstName!: string;
   lastName!: string;
@@ -24,18 +25,19 @@ export class EditComponent implements OnInit {
     const userData = JSON.parse(`${localStorage.getItem('user')}`);
     if (userData) {
       this.id = userData.id;
+      this.user = userData;
     }
   }
 
   onEditSubmit() {
     const data = {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      username: this.username,
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      email: this.user.email,
+      username: this.user.username,
     };
     this.authService.updateProfile(this.id, data).subscribe((data) => {
-      this.toastMessage.success('You have updated your details successfully');
+      this.toastMessage.success('You have updated your details successfully!');
       this.router.navigate(['/dashboard']);
     });
   }
