@@ -34,7 +34,7 @@ $ nodemon app
 ```
 You can use either nodemon or node to run the server.
 
-Next navigate to the frontend directory in a new terminal session and run the command:
+Now you can navigate to the frontend directory in a new terminal session and run the command:
 
 ```sh
 $ ng serve --open
